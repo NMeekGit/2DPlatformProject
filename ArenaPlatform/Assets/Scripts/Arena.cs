@@ -11,10 +11,6 @@ public class Arena : MonoBehaviour
     GameObject spawn2;
     GameObject spawn3;
     GameObject spawn4;
-    Rigidbody2D point1;
-    Rigidbody2D point2;
-    Rigidbody2D point3;
-    Rigidbody2D point4;
 
     public float timeToSpawn;
 
@@ -26,8 +22,7 @@ public class Arena : MonoBehaviour
         spawn1 = GameObject.Find("Spawn1");
         spawn2 = GameObject.Find("Spawn2");
         spawn3 = GameObject.Find("Spawn3");
-        spawn3 = GameObject.Find("Spawn4");
-
+        spawn4 = GameObject.Find("Spawn4");
     }
 
     // Update is called once per frame
@@ -38,25 +33,37 @@ public class Arena : MonoBehaviour
 
     void SpawnEnemy()
     {
-        GameObject enemy = Instantiate(enemyPrefab) as GameObject;
-        Rigidbody2D enemyPoint = enemy.GetComponent<Rigidbody2D>();
         float spawnPoint = Random.value;
 
-        if (spawnPoint < .25f)
+        if (spawnPoint < 0.2f)
         {
+            GameObject enemy = Instantiate(enemyPrefab) as GameObject;
+            Rigidbody2D enemyPoint = enemy.GetComponent<Rigidbody2D>();
             enemyPoint.position = spawn1.transform.position;
         }
-        else if (spawnPoint < .5f)
+        else if (spawnPoint < 0.5f)
         {
+            GameObject enemy = Instantiate(enemyPrefab) as GameObject;
+            Rigidbody2D enemyPoint = enemy.GetComponent<Rigidbody2D>();
             enemyPoint.position = spawn2.transform.position;
         }
-        else if (spawnPoint < .75f)
+        else if (spawnPoint < 0.7f)
         {
+            GameObject enemy = Instantiate(enemyPrefab) as GameObject;
+            Rigidbody2D enemyPoint = enemy.GetComponent<Rigidbody2D>();
             enemyPoint.position = spawn3.transform.position;
         }
         else if (spawnPoint <= 1.0f)
         {
+            GameObject enemy = Instantiate(enemyPrefab) as GameObject;
+            Rigidbody2D enemyPoint = enemy.GetComponent<Rigidbody2D>();
             enemyPoint.position = spawn4.transform.position;
+        }
+        else
+        {
+            GameObject enemy = Instantiate(enemyPrefab) as GameObject;
+            Rigidbody2D enemyPoint = enemy.GetComponent<Rigidbody2D>();
+            enemyPoint.position = spawn1.transform.position;
         }
     }
 }

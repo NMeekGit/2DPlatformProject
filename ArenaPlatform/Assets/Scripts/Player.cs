@@ -15,4 +15,14 @@ public class Player : MonoBehaviour
     {
         
     }
+    
+    void OnTriggerEnter2D( Collider2D coll )
+    {
+        // Find out what hit this basket
+        GameObject collidedWith = coll.gameObject;
+        if ( collidedWith.tag == "Enemy" )
+        {
+            Destroy( collidedWith );
+        }
+    }
 }

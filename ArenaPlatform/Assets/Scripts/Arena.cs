@@ -66,4 +66,9 @@ public class Arena : MonoBehaviour
             enemyPoint.position = spawn1.transform.position;
         }
     }
+    
+/*    public static Infected()
+    {
+       
+    }*/
 }

@@ -9,6 +9,7 @@ public class Player : MonoBehaviour
     GameObject player;
     GameObject spawnMain;
     GameObject spawnInfected;
+    Arena arScript;
     
     // Start is called before the first frame update
     void Start()
@@ -31,7 +32,9 @@ public class Player : MonoBehaviour
         if ( collidedWith.tag == "Enemy" )
         {
        	    Debug.Log("enemy collision");
-            Destroy( collidedWith );
+            arScript = Camera.main.GetComponent<Arena>();
+            arScript.PlayerInfected();
+            arScript.AddNum();
             GameObject infectedPlayer = Instantiate(infectedPrefab, spawnInfected.transform.position, spawnInfected.transform.rotation) as GameObject;
             player.transform.position = spawnMain.transform.position;
             //Arena(Infected());

@@ -4,15 +4,17 @@ using UnityEngine;
 
 public class Projectile : MonoBehaviour
 {
-    // Start is called before the first frame update
-    void Start()
+    
+
+
+    void OnCollisionEnter2D(Collision2D coll)
     {
+        Destroy(gameObject);
         
+        if(coll.gameObject.tag == ("Enemy"))
+        {
+            Destroy(coll.gameObject);
+        }
     }
 
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
 }

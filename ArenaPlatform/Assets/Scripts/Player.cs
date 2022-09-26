@@ -5,7 +5,6 @@ using UnityEngine;
 public class Player : MonoBehaviour
 {
     public GameObject infectedPrefab;
-    public Transform pos;
     GameObject player;
     GameObject spawnMain;
     GameObject spawnInfected;
@@ -37,7 +36,16 @@ public class Player : MonoBehaviour
             arScript.AddNum();
             GameObject infectedPlayer = Instantiate(infectedPrefab, spawnInfected.transform.position, spawnInfected.transform.rotation) as GameObject;
             player.transform.position = spawnMain.transform.position;
-            //Arena(Infected());
+        }
+    }      
+        
+    void OnTriggerEnter2D( Collider2D trig )
+    {
+        Debug.Log("Trigger");
+        GameObject collidedWith = trig.gameObject;
+        if (collidedWith.tag == "Boundary")
+        {
+            Debug.Log("Boundary Collision");
         }
     }
 }

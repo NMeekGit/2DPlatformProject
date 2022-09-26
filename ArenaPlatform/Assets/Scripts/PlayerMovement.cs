@@ -8,10 +8,18 @@ public class PlayerMovement : MonoBehaviour
 
     public Rigidbody2D rb;
     public Camera cam;
-
+    
+    GameObject platform;
+    Transform platformPos;
     Vector2 moveDirection;
     Vector2 mousePos;
     Vector2 rotate;
+    
+    void Start()
+    {
+        platform = GameObject.Find("Platform");
+        platformPos = platform.GetComponent<Transform>();
+    }
 
     // Update is called once per frame
     void Update()

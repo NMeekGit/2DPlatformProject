@@ -5,7 +5,7 @@ using UnityEngine;
 public class Projectile : MonoBehaviour
 {
     
-
+	Arena hit;
 
     void OnCollisionEnter2D(Collision2D coll)
     {
@@ -14,7 +14,13 @@ public class Projectile : MonoBehaviour
         if(coll.gameObject.tag == ("Enemy"))
         {
             Destroy(coll.gameObject);
+			hit = Camera.main.GetComponent<Arena>();
+			hit.AddNum();
         }
     }
-
+	
+	void OnTriggerEnter2D(Collider2D coll)
+	{
+		Destroy(gameObject);
+	}
 }

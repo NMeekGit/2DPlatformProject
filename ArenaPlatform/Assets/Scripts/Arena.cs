@@ -11,11 +11,14 @@ public class Arena : MonoBehaviour
     GameObject spawn2;
     GameObject spawn3;
     GameObject spawn4;
+    public GameObject heart;
 
     public float totalZombies;
     public float timeToSpawn;
     
     float numZombies;
+
+    Hearts createHearts;
 
     // Start is called before the first frame update
     void Start()
@@ -28,6 +31,9 @@ public class Arena : MonoBehaviour
         spawn4 = GameObject.Find("Spawn4");
         
         numZombies = 0f;
+
+        createHearts = heart.GetComponent<Hearts>();
+        createHearts.instantiateHearts();
     }
 
     // Update is called once per frame

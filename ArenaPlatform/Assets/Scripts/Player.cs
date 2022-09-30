@@ -5,10 +5,12 @@ using UnityEngine;
 public class Player : MonoBehaviour
 {
     public GameObject infectedPrefab;
+	public GameObject heartOB;
     GameObject player;
     GameObject spawnMain;
     GameObject spawnInfected;
     Arena arScript;
+	Hearts hearts;
     
     // Start is called before the first frame update
     void Start()
@@ -36,6 +38,8 @@ public class Player : MonoBehaviour
             arScript.AddNum();
             GameObject infectedPlayer = Instantiate(infectedPrefab, spawnInfected.transform.position, spawnInfected.transform.rotation) as GameObject;
             player.transform.position = spawnMain.transform.position;
+			hearts = heartOB.GetComponent<Hearts>();
+			hearts.removeHeart();
         }
     }      
         

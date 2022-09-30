@@ -350,11 +350,6 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 100, y: 10}
   m_EdgeRadius: 0
---- !u!1 &299279232 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 4444083502166470966, guid: 59d5325ed41470d4295cea9c4d28835b, type: 3}
-  m_PrefabInstance: {fileID: 5370786020037476719}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1 &316096429 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 4493484767429567266, guid: 9902749974b06324ca972e38368db11c, type: 3}
@@ -723,7 +718,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   enemyPrefab: {fileID: 3440249425916520673, guid: b1fd2a1b88556e54b9f95f8ec5fad679, type: 3}
-  playerPrefab: {fileID: 299279232}
+  player: {fileID: 0}
   heart: {fileID: 824067873}
   totalZombies: 60
   timeToSpawn: 2
@@ -1681,6 +1676,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Player
       objectReference: {fileID: 0}
+    - target: {fileID: 5370786019487482445, guid: 59d5325ed41470d4295cea9c4d28835b, type: 3}
+      propertyPath: heartOB
+      value: 
+      objectReference: {fileID: 824067873}
     - target: {fileID: 5370786019487482445, guid: 59d5325ed41470d4295cea9c4d28835b, type: 3}
       propertyPath: infectedPrefab
       value: 

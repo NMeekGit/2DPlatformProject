@@ -334,7 +334,7 @@ BoxCollider2D:
   m_Enabled: 1
   m_Density: 1
   m_Material: {fileID: 0}
-  m_IsTrigger: 1
+  m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
   m_Offset: {x: 0, y: 0}
@@ -596,7 +596,7 @@ GameObject:
   - component: {fileID: 460891709}
   m_Layer: 0
   m_Name: Boundaries
-  m_TagString: Untagged
+  m_TagString: Boundary
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -718,8 +718,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   enemyPrefab: {fileID: 3440249425916520673, guid: b1fd2a1b88556e54b9f95f8ec5fad679, type: 3}
-  player: {fileID: 0}
-  heart: {fileID: 824067873}
+  player: {fileID: 1504422206}
+  createHearts: {fileID: 824067876}
   totalZombies: 60
   timeToSpawn: 2
 --- !u!1 &579063724
@@ -817,6 +817,7 @@ MonoBehaviour:
   heartList: []
   numberOfHearts: 3
   heartSpacingX: 13
+  arena: {fileID: 519420033}
 --- !u!4 &824067877
 Transform:
   m_ObjectHideFlags: 0
@@ -1137,6 +1138,11 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &1504422206 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 4444083502166470966, guid: 59d5325ed41470d4295cea9c4d28835b, type: 3}
+  m_PrefabInstance: {fileID: 5370786020037476719}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1548778225 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 5302950317164230767, guid: 9902749974b06324ca972e38368db11c, type: 3}
@@ -1376,7 +1382,7 @@ BoxCollider2D:
   m_Enabled: 1
   m_Density: 1
   m_Material: {fileID: 0}
-  m_IsTrigger: 1
+  m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
   m_Offset: {x: 0, y: 0}
@@ -1439,7 +1445,7 @@ BoxCollider2D:
   m_Enabled: 1
   m_Density: 1
   m_Material: {fileID: 0}
-  m_IsTrigger: 1
+  m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
   m_Offset: {x: 0, y: 0}
@@ -1601,7 +1607,7 @@ BoxCollider2D:
   m_Enabled: 1
   m_Density: 1
   m_Material: {fileID: 0}
-  m_IsTrigger: 1
+  m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
   m_Offset: {x: 0, y: 0}
@@ -1677,9 +1683,21 @@ PrefabInstance:
       value: Player
       objectReference: {fileID: 0}
     - target: {fileID: 5370786019487482445, guid: 59d5325ed41470d4295cea9c4d28835b, type: 3}
+      propertyPath: hearts
+      value: 
+      objectReference: {fileID: 824067876}
+    - target: {fileID: 5370786019487482445, guid: 59d5325ed41470d4295cea9c4d28835b, type: 3}
+      propertyPath: player
+      value: 
+      objectReference: {fileID: 1504422206}
+    - target: {fileID: 5370786019487482445, guid: 59d5325ed41470d4295cea9c4d28835b, type: 3}
       propertyPath: heartOB
       value: 
       objectReference: {fileID: 824067873}
+    - target: {fileID: 5370786019487482445, guid: 59d5325ed41470d4295cea9c4d28835b, type: 3}
+      propertyPath: arScript
+      value: 
+      objectReference: {fileID: 519420033}
     - target: {fileID: 5370786019487482445, guid: 59d5325ed41470d4295cea9c4d28835b, type: 3}
       propertyPath: infectedPrefab
       value: 

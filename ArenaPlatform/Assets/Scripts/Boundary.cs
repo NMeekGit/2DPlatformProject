@@ -4,19 +4,18 @@ using UnityEngine;
 
 public class Boundary : MonoBehaviour
 {
-    public GameObject player;
-    Transform pos;
+    public Transform posPlayer;
     // Start is called before the first frame update
     void Start()
     {
-        pos = player.GetComponent<Transform>();
     }
 
     // Update is called once per frame
     void Update()
     {
-        
     }
 
-    
+    void OnTrigger2D(Collider2D collider)
+	{
+	}
 }

@@ -6,16 +6,15 @@ public class Player : MonoBehaviour
 {
     public GameObject infectedPrefab;
 	public GameObject heartOB;
-    GameObject player;
+    public GameObject player;
     GameObject spawnMain;
     GameObject spawnInfected;
-    Arena arScript;
-	Hearts hearts;
+    public Arena arScript;
+	public Hearts hearts;
     
     // Start is called before the first frame update
     void Start()
     {
-	player = GameObject.Find("Player");
 	spawnMain = GameObject.Find("Respawn(main)");
 	spawnInfected = GameObject.Find("Spawn1");
     }
@@ -33,23 +32,28 @@ public class Player : MonoBehaviour
         if ( collidedWith.tag == "Enemy" )
         {
        	    Debug.Log("enemy collision");
-            arScript = Camera.main.GetComponent<Arena>();
             arScript.PlayerInfected();
-            arScript.AddNum();
             GameObject infectedPlayer = Instantiate(infectedPrefab, spawnInfected.transform.position, spawnInfected.transform.rotation) as GameObject;
             player.transform.position = spawnMain.transform.position;
-			hearts = heartOB.GetComponent<Hearts>();
 			hearts.removeHeart();
         }
+
+        if (collidedWith.tag == "Boundary")
+        {
+            Debug.Log("Boundary Collision");
+        }
+
+		if (collidedWith.tag == "Projectile")
+		{
+			Debug.Log("shot detected");
+			hearts.removeHeart();
+            player.transform.position = spawnMain.transform.position;
+		}
     }      
         
     void OnTriggerEnter2D( Collider2D trig )
     {
         Debug.Log("Trigger");
         GameObject collidedWith = trig.gameObject;
-        if (collidedWith.tag == "Boundary")
-        {
-            Debug.Log("Boundary Collision");
-        }
     }
 }

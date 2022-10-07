@@ -6,12 +6,12 @@ public class Arena : MonoBehaviour
 {
     public GameObject enemyPrefab;
     public GameObject player;
+    public Hearts createHearts;
 
     GameObject spawn1;
     GameObject spawn2;
     GameObject spawn3;
     GameObject spawn4;
-    public GameObject heart;
 
     public float totalZombies;
     public float timeToSpawn;
@@ -20,7 +20,6 @@ public class Arena : MonoBehaviour
 	bool dead;
 	bool stopSpawn;
 
-    Hearts createHearts;
 
     // Start is called before the first frame update
     void Start()
@@ -35,7 +34,6 @@ public class Arena : MonoBehaviour
         
         numZombies = 0f;
 
-        createHearts = heart.GetComponent<Hearts>();
         createHearts.instantiateHearts();
     }
 
@@ -93,7 +91,7 @@ public class Arena : MonoBehaviour
 
 	public void GameOver()
 	{
-		Destroy( player );
+		Destroy( player.gameObject );
 	}
     
     public void PlayerInfected()

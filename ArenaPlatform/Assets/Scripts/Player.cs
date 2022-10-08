@@ -5,15 +5,16 @@ using UnityEngine;
 public class Player : MonoBehaviour
 {
     public GameObject infectedPrefab;
-    GameObject player;
+	public GameObject heartOB;
+    public GameObject player;
     GameObject spawnMain;
     GameObject spawnInfected;
-    Arena arScript;
+    public Arena arScript;
+	public Hearts hearts;
     
     // Start is called before the first frame update
     void Start()
     {
-	player = GameObject.Find("Player");
 	spawnMain = GameObject.Find("Respawn(main)");
 	spawnInfected = GameObject.Find("Spawn1");
     }
@@ -31,21 +32,28 @@ public class Player : MonoBehaviour
         if ( collidedWith.tag == "Enemy" )
         {
        	    Debug.Log("enemy collision");
-            arScript = Camera.main.GetComponent<Arena>();
             arScript.PlayerInfected();
-            arScript.AddNum();
             GameObject infectedPlayer = Instantiate(infectedPrefab, spawnInfected.transform.position, spawnInfected.transform.rotation) as GameObject;
             player.transform.position = spawnMain.transform.position;
+			hearts.removeHeart();
         }
+
+        if (collidedWith.tag == "Boundary")
+        {
+            Debug.Log("Boundary Collision");
+        }
+
+		if (collidedWith.tag == "Projectile")
+		{
+			Debug.Log("shot detected");
+			hearts.removeHeart();
+            player.transform.position = spawnMain.transform.position;
+		}
     }      
         
     void OnTriggerEnter2D( Collider2D trig )
     {
         Debug.Log("Trigger");
         GameObject collidedWith = trig.gameObject;
-        if (collidedWith.tag == "Boundary")
-        {
-            Debug.Log("Boundary Collision");
-        }
     }
 }

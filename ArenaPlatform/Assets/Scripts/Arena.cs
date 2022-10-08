@@ -5,24 +5,26 @@ using UnityEngine;
 public class Arena : MonoBehaviour
 {
     public GameObject enemyPrefab;
-    public GameObject playerPrefab;
+    public GameObject player;
+    public Hearts createHearts;
 
     GameObject spawn1;
     GameObject spawn2;
     GameObject spawn3;
     GameObject spawn4;
-    public GameObject heart;
 
     public float totalZombies;
     public float timeToSpawn;
     
     float numZombies;
+	bool dead;
+	bool stopSpawn;
 
-    Hearts createHearts;
 
     // Start is called before the first frame update
     void Start()
     {
+		dead = false;
         InvokeRepeating("SpawnEnemy", 3, timeToSpawn);
 
         spawn1 = GameObject.Find("Spawn1");
@@ -32,55 +34,65 @@ public class Arena : MonoBehaviour
         
         numZombies = 0f;
 
-        createHearts = heart.GetComponent<Hearts>();
         createHearts.instantiateHearts();
     }
 
     // Update is called once per frame
     void Update()
     {
-        
+        if (dead) 
+		{
+			stopSpawn = true;
+		}
     }
 
     void SpawnEnemy()
     {
-        float spawnPoint = Random.value;
-        
-        if (numZombies < totalZombies)
-        {
+		if (!stopSpawn) {
+		
+			float spawnPoint = Random.value;
+			
+			if (numZombies < totalZombies)
+			{
 
-            if (spawnPoint < 0.2f)
-            {
-                GameObject enemy = Instantiate(enemyPrefab) as GameObject;
-                Rigidbody2D enemyPoint = enemy.GetComponent<Rigidbody2D>();
-                enemyPoint.position = spawn1.transform.position;
-            }
-            else if (spawnPoint < 0.5f)
-            {
-                GameObject enemy = Instantiate(enemyPrefab) as GameObject;
-                Rigidbody2D enemyPoint = enemy.GetComponent<Rigidbody2D>();
-                enemyPoint.position = spawn2.transform.position;
-            }
-            else if (spawnPoint < 0.7f)
-            {
-                GameObject enemy = Instantiate(enemyPrefab) as GameObject;
-                Rigidbody2D enemyPoint = enemy.GetComponent<Rigidbody2D>();
-                enemyPoint.position = spawn3.transform.position;
-            }
-            else if (spawnPoint <= 1.0f)
-            {
-                GameObject enemy = Instantiate(enemyPrefab) as GameObject;
-                Rigidbody2D enemyPoint = enemy.GetComponent<Rigidbody2D>();
-                enemyPoint.position = spawn4.transform.position;
-            }
-            else
-            {
-                GameObject enemy = Instantiate(enemyPrefab) as GameObject;
-                Rigidbody2D enemyPoint = enemy.GetComponent<Rigidbody2D>();
-                enemyPoint.position = spawn1.transform.position;
-            }
-        }
+				if (spawnPoint < 0.2f)
+				{
+					GameObject enemy = Instantiate(enemyPrefab) as GameObject;
+					Rigidbody2D enemyPoint = enemy.GetComponent<Rigidbody2D>();
+					enemyPoint.position = spawn1.transform.position;
+				}
+				else if (spawnPoint < 0.5f)
+				{
+					GameObject enemy = Instantiate(enemyPrefab) as GameObject;
+					Rigidbody2D enemyPoint = enemy.GetComponent<Rigidbody2D>();
+					enemyPoint.position = spawn2.transform.position;
+				}
+				else if (spawnPoint < 0.7f)
+				{
+					GameObject enemy = Instantiate(enemyPrefab) as GameObject;
+					Rigidbody2D enemyPoint = enemy.GetComponent<Rigidbody2D>();
+					enemyPoint.position = spawn3.transform.position;
+				}
+				else if (spawnPoint <= 1.0f)
+				{
+					GameObject enemy = Instantiate(enemyPrefab) as GameObject;
+					Rigidbody2D enemyPoint = enemy.GetComponent<Rigidbody2D>();
+					enemyPoint.position = spawn4.transform.position;
+				}
+				else
+				{
+					GameObject enemy = Instantiate(enemyPrefab) as GameObject;
+					Rigidbody2D enemyPoint = enemy.GetComponent<Rigidbody2D>();
+					enemyPoint.position = spawn1.transform.position;
+				}
+			}
+		}
     }
+
+	public void GameOver()
+	{
+		Destroy( player.gameObject );
+	}
     
     public void PlayerInfected()
     {
